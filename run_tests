@@ -1,0 +1,13 @@
+#!/bin/bash
+
+javac src/crux/*java -d bin
+for d in tests*/; do
+  for f in $d*.crx; do
+    java -cp ./bin crux.Compiler $f | diff - ${f:0:${#f}-3}out
+    if [ $? != 0 ]; then 
+      echo $f failed!
+      exit
+    fi
+  done
+done  
+echo All tests pass!
