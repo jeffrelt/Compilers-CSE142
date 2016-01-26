@@ -88,7 +88,7 @@ public class Token {
 	
 	private int lineNum;
 	private int charPos;
-	Kind kind;
+	private Kind kind;
 	private String lexeme = "";
 	
 	private Token(int lineNum, int charPos)
@@ -171,7 +171,15 @@ public class Token {
 	
 	// OPTIONAL: function to query a token about its kind
 	//           boolean is(Token.Kind kind)
+	public boolean is(Token.Kind kind)
+	{
+		return this.kind == kind;
+	}
 	
+	public Kind kind()
+	{
+		return this.kind;
+	}
 	// OPTIONAL: add any additional helper or convenience methods
 	//           that you find make for a clean design
 

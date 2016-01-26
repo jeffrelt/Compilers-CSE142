@@ -1,11 +1,12 @@
 #!/bin/bash
-
+pwd
 javac src/crux/*java -d bin
 for d in tests*/; do
   for f in $d*.crx; do
     java -cp ./bin crux.Compiler $f | diff - ${f:0:${#f}-3}out
     if [ $? != 0 ]; then 
       echo $f failed!
+      java -cp ./bin/crux crux.Compiler $f > error.out
       exit
     fi
   done

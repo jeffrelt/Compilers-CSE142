@@ -8,7 +8,7 @@ import java.util.HashSet;
 
 import crux.Token.Kind;
 
-public class Scanner /*implements Iterable<Token>*/ {
+public class Scanner implements Iterable<Token> {
 	public static String studentName = "Jeffrey Thompson";
     public static String studentID = "jeffrelt";
     public static String uciNetID = "12987953";
@@ -129,5 +129,31 @@ public class Scanner /*implements Iterable<Token>*/ {
 		}
 	}
 
-	// OPTIONAL: any other methods that you find convenient for implementation or testing
+    @Override
+    public Iterator<Token> iterator() {
+        return new ScannerIterator(this);
+    }
+
+    private class ScannerIterator implements Iterator<Token> {
+        Scanner myScanner;
+
+        public ScannerIterator(Scanner scanner) {
+            this.myScanner = scanner;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return myScanner.nextChar != -1;
+        }
+
+        @Override
+        public Token next() {
+            return myScanner.next();
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+    }
 }
