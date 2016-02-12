@@ -11,7 +11,7 @@ public class Compiler {
     
     public static void main(String[] args)
     {
-        String sourceFilename = args[0];
+        String sourceFilename = args[0]; 
         
         Scanner s = null;
         try {
@@ -29,7 +29,7 @@ public class Compiler {
             System.out.println(p.errorReport());
             System.exit(-3);
         }
-        System.out.println(p.parseTreeReport());
+        System.out.println("Crux program successfully parsed.");
     }
 }
     

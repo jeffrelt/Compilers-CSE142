@@ -1,5 +1,5 @@
 #!/bin/bash
-pwd
+
 javac src/crux/*java -d bin
 for d in tests*/; do
   for f in $d*.crx; do
